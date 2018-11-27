@@ -1,5 +1,5 @@
 class Triangle
-  attr_accessor(:sides)
+  attr_accessor(:sides, :result)
 
   def initialize(side_a, side_b, side_c)
     @sides = [side_a.to_i, side_b.to_i, side_c.to_i].sort!
@@ -7,13 +7,13 @@ class Triangle
 
   def triangle?
     if @sides[0] + @sides[1] <= @sides[2]
-      return false
+      @result = "Not a triangle"
     elsif (@sides[0] == @sides[1]) && (@sides[1] == @sides[2])
-      return "equilateral"
+      @result = "equilateral"
     elsif ((@sides[0] == @sides[1]) && (@sides[1] != @sides[2])) || ((@sides[0] != @sides[1]) && (@sides[1] == @sides[2]))
-      return "isosceles"
+      @result = "isosceles"
     elsif (@sides[0] != @sides[1]) && (@sides[1] != @sides[2]) && (@sides[2] != @sides[1])
-      return "scalene"
+      @result = "scalene"
     end
   end
 end
